@@ -435,6 +435,10 @@ def style_events(df):
     return df.style.map(prediction_style, subset=["prediction"])
 
 
+def go_to_page(page_name):
+    st.session_state["nav_select"] = page_name
+
+
 def dashboard_page():
     page_header(
         "SOC Command Center",
@@ -459,9 +463,7 @@ def dashboard_page():
                 st.session_state["workflow_result"] = result
                 st.success(f"Created {result['alerts_created']} alerts and {len(result['incidents_created'])} incidents.")
     with action3:
-        if st.button("Open incidents", width="stretch"):
-            st.session_state["nav"] = "Incidents"
-            st.rerun()
+        st.button("Open incidents", on_click=go_to_page, args=("Incidents",), width="stretch")
 
     data = dashboard_data()
     stats = data["stats"]
@@ -1068,7 +1070,7 @@ PAGES = {
     "Settings": settings_page,
 }
 
-st.session_state.setdefault("nav", "Dashboard")
+st.session_state.setdefault("nav_select", "Dashboard")
 st.sidebar.title("SOC ANALYST")
 st.sidebar.caption("Local security operations center")
 sidebar_stats = db.q1(
@@ -1077,5 +1079,5 @@ sidebar_stats = db.q1(
 ) or {}
 st.sidebar.metric("Active incidents", sidebar_stats.get("active", 0))
 st.sidebar.caption(f"{sidebar_stats.get('alerts', 0):,} alerts · {sidebar_stats.get('events', 0):,} events")
-page = st.sidebar.radio("Navigate", list(PAGES), key="nav", format_func=lambda name: NAV_LABELS[name])
+page = st.sidebar.radio("Navigate", list(PAGES), key="nav_select", format_func=lambda name: NAV_LABELS[name])
 PAGES[page]()

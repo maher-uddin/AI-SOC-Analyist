@@ -1,6 +1,6 @@
 # AI-Powered SOC Analyst (local, no external APIs)
 
-React + Vite + Tailwind + Recharts frontend, FastAPI + scikit-learn + SQLite backend.
+React + Vite + Tailwind + Recharts frontend, FastAPI + scikit-learn + SQLite backend. A Streamlit frontend is also included for simple cloud deployment.
 
 ## Run on Windows (two terminals)
 Terminal 1 - backend
@@ -32,3 +32,17 @@ The default model is trained on SYNTHETIC data and mislabels real CICIDS rows.
 - Random-split scores (~99.98%) are optimistic for single-capture data.
 - Threat intel is a small offline list of fictional IPs. Responses are recommendations; "block" is a simulated flag only.
 - Large uploads are randomly sampled to 20,000 rows.
+
+## Run with Streamlit
+    pip install -r requirements.txt
+    streamlit run streamlit_app.py
+
+`streamlit_app.py` imports the backend modules directly, so it does not need the React frontend or a separate FastAPI server.
+
+## Deploy to Streamlit Community Cloud
+1. Push this repository to GitHub.
+2. Open https://share.streamlit.io and sign in.
+3. Select **New app**, choose this repository, branch `main`, and main file `streamlit_app.py`.
+4. Click **Deploy**. No secrets or environment variables are required.
+
+Streamlit Community Cloud uses the root `requirements.txt`; the SQLite database and uploaded/generated state are ephemeral on the hosted app.

@@ -1,0 +1,165 @@
+{
+ "accuracy": 0.9977513652425313,
+ "precision": 0.9977825723621729,
+ "recall": 0.9977513652425313,
+ "f1": 0.997756436349391,
+ "labels": [
+  "Botnet",
+  "BruteForce",
+  "DDoS",
+  "DoS",
+  "Normal",
+  "PortScan",
+  "SuspiciousOutbound"
+ ],
+ "confusion_matrix": [
+  [
+   263,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   0,
+   375,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   0,
+   0,
+   375,
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   0,
+   0,
+   0,
+   375,
+   0,
+   0,
+   0
+  ],
+  [
+   0,
+   6,
+   0,
+   0,
+   1119,
+   0,
+   0
+  ],
+  [
+   0,
+   0,
+   1,
+   0,
+   0,
+   374,
+   0
+  ],
+  [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   225
+  ]
+ ],
+ "per_class": {
+  "Botnet": {
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1-score": 1.0,
+   "support": 263.0
+  },
+  "BruteForce": {
+   "precision": 0.984251968503937,
+   "recall": 1.0,
+   "f1-score": 0.9920634920634921,
+   "support": 375.0
+  },
+  "DDoS": {
+   "precision": 0.9973404255319149,
+   "recall": 1.0,
+   "f1-score": 0.9986684420772304,
+   "support": 375.0
+  },
+  "DoS": {
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1-score": 1.0,
+   "support": 375.0
+  },
+  "Normal": {
+   "precision": 1.0,
+   "recall": 0.9946666666666667,
+   "f1-score": 0.9973262032085561,
+   "support": 1125.0
+  },
+  "PortScan": {
+   "precision": 1.0,
+   "recall": 0.9973333333333333,
+   "f1-score": 0.9986648865153538,
+   "support": 375.0
+  },
+  "SuspiciousOutbound": {
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1-score": 1.0,
+   "support": 225.0
+  },
+  "accuracy": 0.9977513652425313,
+  "macro avg": {
+   "precision": 0.9973703420051218,
+   "recall": 0.9988571428571429,
+   "f1-score": 0.998103289123519,
+   "support": 3113.0
+  },
+  "weighted avg": {
+   "precision": 0.9977825723621729,
+   "recall": 0.9977513652425313,
+   "f1-score": 0.997756436349391,
+   "support": 3113.0
+  }
+ },
+ "isolation_forest": {
+  "precision": 0.9549660703269587,
+  "recall": 0.778672032193159,
+  "f1": 0.85785536159601
+ },
+ "train_rows": 9337,
+ "test_rows": 3113,
+ "feature_importance": {
+  "fwd_packets": 0.1213967280600298,
+  "fwd_bytes": 0.11768482447970757,
+  "flow_bytes_s": 0.1024784302711311,
+  "dst_port": 0.07448417130627429,
+  "init_win_bwd": 0.07059450685853762,
+  "avg_packet_size": 0.06606955651456513,
+  "flow_iat_mean": 0.061111914479629374,
+  "flow_duration": 0.06047203718578608,
+  "bwd_bytes": 0.053437446439502274,
+  "fwd_pkt_len_mean": 0.05327451034287862,
+  "flow_packets_s": 0.052127733839034435,
+  "bwd_packets": 0.04440249459380706,
+  "bwd_pkt_len_mean": 0.04354562114670732,
+  "init_win_fwd": 0.036105884455625716,
+  "psh_flags": 0.013228209738766357,
+  "syn_flags": 0.00871134558107459,
+  "down_up_ratio": 0.007819877714059663,
+  "rst_flags": 0.007243822687143987,
+  "ack_flags": 0.005810884305738946
+ }
+}

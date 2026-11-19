@@ -1,0 +1,25 @@
+"""Locally stored MITRE ATT&CK mapping."""
+MITRE = {
+ "BruteForce": {"id": "T1110", "name": "Brute Force", "tactic": "Credential Access",
+   "description": "Adversaries try many passwords/credentials against services such as SSH, FTP or RDP.",
+   "mitigation": "Enforce account lockout, MFA and strong passwords; rate-limit authentication; review auth logs."},
+ "PortScan": {"id": "T1046", "name": "Network Service Discovery", "tactic": "Discovery",
+   "description": "Adversaries enumerate open ports/services on remote hosts to find attack surface.",
+   "mitigation": "Restrict exposed services, segment the network, use IDS scan detection and firewall rate limits."},
+ "DoS": {"id": "T1499", "name": "Endpoint Denial of Service", "tactic": "Impact",
+   "description": "Exhausting a single service or host's resources to degrade availability.",
+   "mitigation": "Connection limits, SYN cookies, WAF/rate limiting, and capacity for the targeted service."},
+ "DDoS": {"id": "T1498", "name": "Network Denial of Service", "tactic": "Impact",
+   "description": "Distributed traffic floods that saturate network or service capacity.",
+   "mitigation": "Upstream scrubbing/CDN, ingress filtering, rate limiting and traffic baselining."},
+ "Botnet": {"id": "T1071", "name": "Application Layer Protocol (C2)", "tactic": "Command and Control",
+   "description": "Compromised hosts beacon to command-and-control over common or unusual ports.",
+   "mitigation": "Egress filtering, block known C2 ports, DNS/proxy monitoring, isolate beaconing hosts."},
+ "SuspiciousOutbound": {"id": "T1041", "name": "Exfiltration Over C2 Channel", "tactic": "Exfiltration",
+   "description": "Large outbound transfers that may carry stolen data.",
+   "mitigation": "DLP, egress allow-lists, alert on unusual outbound volume, review the sending host."},
+ "Scripting": {"id": "T1059", "name": "Command and Scripting Interpreter", "tactic": "Execution",
+   "description": "Reference entry; execution-stage activity needs host logs, which flow data cannot show.",
+   "mitigation": "Application allow-listing, script logging and EDR."},
+}
+def lookup(cat): return MITRE.get(cat)
